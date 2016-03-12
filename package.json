@@ -1,0 +1,26 @@
+{
+  "name": "deliverydotcom",
+  "version": "0.0.0",
+  "description": "A Node client for the Delivery.com API",
+  "main": "src/deliverydotcom.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faaez/deliverydotcom.git"
+  },
+  "keywords": [
+    "Delivery.com",
+    "delivery"
+  ],
+  "author": "Faaez Ul Haq",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/faaez/deliverydotcom/issues"
+  },
+   "dependencies": {
+    "request":"2.69.0"  
+  },
+  "homepage": "https://github.com/faaez/deliverydotcom#readme"
+}
