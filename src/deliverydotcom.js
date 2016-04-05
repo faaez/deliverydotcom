@@ -51,7 +51,7 @@ var deliverydotcom = {
             return response.status;
         });
     },
-    addAddress: function(street,city,state,zipcode,phone,unit_number,cross_streets,company) {
+    addAddress: function(street,city,state,zipcode,phone,unit_number,cross_streets,company,callback) {
         if (!street || !city || !state || !zipcode || !phone) {
             return "missing parameters"
         }
