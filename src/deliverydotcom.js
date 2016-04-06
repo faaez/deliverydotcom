@@ -1,5 +1,5 @@
 var request = require('request');   
-var config = null;//require('./config.js')
+var config = require('./config.js')
 var qs = require('querystring');
 
 var deliverydotcom = {
@@ -7,16 +7,17 @@ var deliverydotcom = {
         config = _config;
     },
     searchDelivery: function(params,callback){
-        var options = {url:config.API_URL+'merchant/search/delivery?'+qs.stringify(params),headers:{'Authorization':config.OAUTH_TOKEN}};
+        var options = {url:config.API_URL+'/merchant/search/delivery?'+qs.stringify(params),headers:{'Authorization':config.OAUTH_TOKEN}};
         console.log(options.url);
         request(options, function(err,response,body){
             if(err) {
                 console.log(err);
             }
-            callback(JSON.parse(body));
+            callback(body);
         });
     },
     addItemToCart: function(merchantId,productId,quantity,instructions,callback) {
+        console.log(config.API_URL+'/customer/cart/'+merchantId);
         var body = {
               "order_type": "delivery",
               "instructions": instructions,
@@ -35,7 +36,8 @@ var deliverydotcom = {
             if(err) {
                 console.log(err);
             }
-            callback(JSON.parse(body));
+            console.log(response.status);
+            callback(body);
         });
     },
     deleteAddress: function(locationId) {
@@ -59,7 +61,7 @@ var deliverydotcom = {
             street: street,
             city: city,
             state: state,
-            zipcode: zipcode,
+            zip_code: zipcode,
             phone: phone
         }
         if (unit_number) {
@@ -81,7 +83,8 @@ var deliverydotcom = {
             if(err) {
                 console.log(err);
             }
-            callback(JSON.parse(body));
+
+            callback(body);
         });
     },
     checkout: function(merchantId,location_id,instructions,callback) {
@@ -111,7 +114,7 @@ var deliverydotcom = {
             if(err) {
                 console.log(err);
             }
-            callback(JSON.parse(body));
+            callback(body);
         });
     }
 }
