@@ -1,5 +1,5 @@
 var request = require('request');   
-var config = require('./config.js')
+var config =  null;//require('./config.js')
 var qs = require('querystring');
 
 var deliverydotcom = {
