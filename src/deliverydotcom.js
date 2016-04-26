@@ -16,6 +16,46 @@ var deliverydotcom = {
             callback(body);
         });
     },
+    merchantInfo: function(merchantId,callback){
+        var options = {
+            method:'GET',
+            url:config.API_URL+'/merchant/'+merchantId,
+            headers:{'Authorization':config.OAUTH_TOKEN}
+        };
+        request(options,function(err,response,body){
+            if(err){
+                console.log(err);
+            }
+            callback(body);
+        });
+    },
+    merchantMenu: function(merchantId,callback){
+        var options = {
+            method:'GET',
+            url:config.API_URL+'/merchant/'+merchantId+'/menu/',
+            headers:{'Authorization':config.OAUTH_TOKEN}
+        };
+        request(options,function(err,response,body){
+            if(err){
+                console.log(err);
+            }
+            callback(body);
+        });
+
+    },
+    merchantHours: function(merchantId,callback){
+        var options = {
+            method:'GET',
+            url:config.API_URL+'/merchant/'+merchantId+'/hours/',
+            headers:{'Authorization':config.OAUTH_TOKEN}
+        };
+        request(options,function(err,response,body){
+            if(err){
+                console.log(err);
+            }
+            callback(body);
+        });
+    },
     addItemToCart: function(merchantId,productId,quantity,instructions,callback) {
         console.log(config.API_URL+'/customer/cart/'+merchantId);
         var body = {
