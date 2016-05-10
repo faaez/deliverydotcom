@@ -56,6 +56,19 @@ var deliverydotcom = {
             callback(body);
         });
     },
+    getProductInfo: function(productId,merchantId) {
+        var options = {
+            method:'GET',
+            url:config.API_URL+'/data/product/'+productId+'?merchantId='+ merchantId,
+            headers:{'Authorization':config.OAUTH_TOKEN}
+        };
+        request(options,function(err,response,body){
+            if(err){
+                console.log(err);
+            }
+            callback(body);
+        });
+    },
     addItemToCart: function(merchantId,productId,quantity,instructions,callback) {
         console.log(config.API_URL+'/customer/cart/'+merchantId);
         var body = {
